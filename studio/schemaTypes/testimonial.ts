@@ -11,12 +11,12 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Mighty Languages (majd-portfolio)', value: 'majd-portfolio' },
+          { title: 'Mighty Languages', value: 'mighty-languages' },
           { title: 'Deutsch Lehrer (lehrer-platform)', value: 'lehrer-platform' },
         ],
         layout: 'radio',
       },
-      initialValue: 'majd-portfolio',
+      initialValue: 'mighty-languages',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

@@ -5,7 +5,7 @@ import "./Testimonials.css";
 
 // Los testimonios se editan desde Sanity Studio (carpeta studio/, o
 // https://majd-testimonios.sanity.studio una vez desplegado), en el
-// documento "testimonial" con site == "majd-portfolio".
+// documento "testimonial" con site == "mighty-languages".
 const FALLBACK_TESTIMONIALS = [
   {
     _id: "fallback-1",
@@ -30,7 +30,7 @@ const FALLBACK_TESTIMONIALS = [
   },
 ];
 
-const QUERY = `*[_type == "testimonial" && site == "majd-portfolio"] | order(_createdAt asc){
+const QUERY = `*[_type == "testimonial" && site == "mighty-languages"] | order(_createdAt asc){
   _id, name, role, text, rating, photo
 }`;
 
