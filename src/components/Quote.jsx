@@ -1,13 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./Quote.css";
 
-const TEXT =
-  "Ya sea que quieras aprender un idioma desde cero, prepararte para un examen internacional o ampliar tus oportunidades académicas y profesionales, encontrarás un plan de aprendizaje diseñado para ayudarte a alcanzar tus objetivos.";
-
-const WORDS = TEXT.split(" ");
 const BAND = 0.3;
 
-export default function Quote() {
+export default function Quote({ text }) {
+  const words = useMemo(() => text.split(" "), [text]);
   const sectionRef = useRef(null);
   const [progress, setProgress] = useState(0);
   const tickingRef = useRef(false);
@@ -49,13 +46,13 @@ export default function Quote() {
     };
   }, []);
 
-  const n = WORDS.length;
+  const n = words.length;
 
   return (
     <section className="quote-section" ref={sectionRef}>
       <div className="container">
         <p className="quote-text">
-          {WORDS.map((word, i) => {
+          {words.map((word, i) => {
             const start = n > 1 ? (i / (n - 1)) * (1 - BAND) : 0;
             const wordProgress = Math.min(1, Math.max(0, (progress - start) / BAND));
             const alpha = 0.1 + 0.9 * wordProgress;

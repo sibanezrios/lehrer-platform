@@ -37,7 +37,7 @@
 
 @media (max-width: 809px) {
   .hero-lion-icon {
-    width: 190px;
+    width: clamp(120px, 32vw, 190px);
   }
 }
 
@@ -45,6 +45,8 @@
   position: relative;
   display: inline-block;
   max-width: 100%;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
 .hero-title {

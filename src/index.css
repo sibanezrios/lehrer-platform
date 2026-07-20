@@ -33,7 +33,7 @@
 :root {
   --cream: #ffffff;
   --dark: #000000;
-  --dark-50: rgba(0, 0, 0, 0.5);
+  --dark-50: rgba(0, 0, 0, 0.65);
   --dark-10: rgba(0, 0, 0, 0.1);
   --cream-90: rgba(255, 255, 255, 0.9);
   --cream-50: rgba(255, 255, 255, 0.5);
@@ -113,53 +113,6 @@ button {
   .container {
     padding: 0 20px;
   }
-}
-
-.arrow-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 8px 8px 20px;
-  border-radius: 100px;
-  background: transparent;
-  border: 1px solid var(--dark);
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  color: var(--dark);
-  transition: gap 0.2s ease;
-}
-
-.arrow-button:hover {
-  gap: 18px;
-}
-
-.arrow-button.light {
-  border-color: var(--cream);
-  color: var(--cream);
-}
-
-.arrow-button .arrow-circle {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.arrow-button.light .arrow-circle {
-  background: var(--cream);
-}
-
-.arrow-button .arrow-circle svg {
-  stroke: var(--cream);
-}
-
-.arrow-button.light .arrow-circle svg {
-  stroke: var(--dark);
 }
 
 section {

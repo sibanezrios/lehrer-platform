@@ -2,13 +2,6 @@ import { useState } from "react";
 import Reveal from "./Reveal";
 import "./Contact.css";
 
-const socials = [
-  { label: "X", href: "https://x.com/" },
-  { label: "Instagram", href: "https://www.instagram.com/" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/" },
-  { label: "YouTube", href: "https://www.youtube.com/" },
-];
-
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", project: "" });
 
@@ -28,68 +21,55 @@ export default function Contact() {
         <div className="contact-main">
           <div className="contact-title-desc">
             <Reveal as="h2" className="section-title">
-              Let&rsquo;s talk.
+              ¡Comencemos tu aprendizaje!
             </Reveal>
             <Reveal as="p" className="contact-desc">
-              Have a project or need help? Fill out the form, and we&apos;ll get back to you
-              soon.
+              ¿Tienes preguntas o te gustaría recibir más información sobre las clases?
+              Completa el formulario y me pondré en contacto contigo para conocer tus
+              objetivos, resolver tus dudas y ayudarte a encontrar el plan de aprendizaje que
+              mejor se adapte a tus necesidades. Será un gusto acompañarte en este nuevo reto.
             </Reveal>
-          </div>
-
-          <div className="contact-socials">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener"
-                className="social-icon"
-                aria-label={s.label}
-              >
-                {s.label[0]}
-              </a>
-            ))}
           </div>
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit}>
           <label className="form-field">
-            <span>Name</span>
+            <span>Nombre</span>
             <input
               type="text"
               name="name"
               required
-              placeholder="Enter your name"
+              placeholder="Escribe tu nombre"
               value={form.name}
               onChange={handleChange}
             />
           </label>
 
           <label className="form-field">
-            <span>Email</span>
+            <span>Correo electrónico</span>
             <input
               type="email"
               name="email"
               required
-              placeholder="Enter your email"
+              placeholder="Escribe tu correo electrónico"
               value={form.email}
               onChange={handleChange}
             />
           </label>
 
           <label className="form-field">
-            <span>Your Project</span>
+            <span>Cuéntame sobre tus objetivos</span>
             <textarea
               name="project"
               required
-              placeholder="Tell us about your project"
+              placeholder="¿Qué idioma quieres aprender y para qué?"
               value={form.project}
               onChange={handleChange}
             />
           </label>
 
           <button type="submit" className="submit-button">
-            Submit
+            Enviar
           </button>
         </form>
       </div>

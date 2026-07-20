@@ -5,7 +5,7 @@ const links = [
   { label: "Conoce mi experiencia", href: "#bio-section" },
   { label: "Descubre mis clases", href: "#services" },
   { label: "Testimonios", href: "#testimonials" },
-  { label: "Recursos gratuitos", href: "#thoughts" },
+  { label: "Únete a mi comunidad", href: "#community" },
   { label: "Contáctame", href: "#contact" },
 ];
 

@@ -1,11 +1,11 @@
 import "./Footer.css";
 
 const links = [
-  { label: "Home", href: "#hero-section" },
-  { label: "About Me", href: "#bio-section" },
+  { label: "Inicio", href: "#hero-section" },
+  { label: "Sobre mí", href: "#bio-section" },
   { label: "Idiomas", href: "#services" },
-  { label: "Works", href: "#work" },
-  { label: "Contact", href: "#contact" },
+  { label: "Trabajos", href: "#work" },
+  { label: "Contacto", href: "#contact" },
 ];
 
 export default function Footer() {
@@ -13,14 +13,14 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-inner">
         <h2 className="footer-heading">
-          Scaling
+          Aprende idiomas
           <br />
-          Start-ups for Growth.
+          sin límites.
         </h2>
 
         <div className="footer-columns">
           <div className="footer-links-col">
-            <h4 className="footer-label">/Quick links</h4>
+            <h4 className="footer-label">/Enlaces rápidos</h4>
             <div className="footer-links">
               {links.map((link) => (
                 <a key={link.label} href={link.href} className="footer-link">
@@ -31,9 +31,9 @@ export default function Footer() {
           </div>
 
           <div className="footer-contact-col">
-            <h4 className="footer-label">/Contact</h4>
-            <a href="mailto:mejed@templyo.io" className="footer-email">
-              Mejed@Templyo.io
+            <h4 className="footer-label">/Contacto</h4>
+            <a href="mailto:dayson0509@gmail.com" className="footer-email">
+              dayson0509@gmail.com
             </a>
           </div>
         </div>

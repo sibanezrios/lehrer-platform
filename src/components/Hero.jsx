@@ -81,9 +81,7 @@ export default function Hero() {
                 adaptada a las necesidades de cada estudiante.
               </p>
             </Reveal>
-            <GetStartedButton href="https://framer.link/nnhGcWR" target="_blank">
-              Get Started
-            </GetStartedButton>
+            <GetStartedButton href="#contact">Comenzar</GetStartedButton>
           </div>
         </div>
       </section>
