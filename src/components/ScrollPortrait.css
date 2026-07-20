@@ -1,0 +1,59 @@
+.scroll-portrait {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.scroll-portrait-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.scroll-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* keep true colors (black/red backgrounds) — exempt from the site-wide
+     grayscale treatment applied to every other <img> */
+  filter: none !important;
+}
+
+.portrait-slot {
+  display: block;
+}
+
+.portrait-slot-start {
+  width: 200px;
+  height: 200px;
+}
+
+.portrait-slot-end {
+  display: block;
+  width: 400px;
+  height: 430px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1279px) and (min-width: 810px) {
+  .portrait-slot-end {
+    width: 320px;
+    height: 344px;
+  }
+}
+
+@media (max-width: 809px) {
+  .portrait-slot-start {
+    width: 140px;
+    height: 140px;
+  }
+  .portrait-slot-end {
+    width: 100%;
+    max-width: 340px;
+    height: 366px;
+  }
+}

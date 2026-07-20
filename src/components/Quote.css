@@ -1,0 +1,32 @@
+.quote-section {
+  padding: 100px 0;
+  display: flex;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.quote-text {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 36px;
+  letter-spacing: -0.02em;
+  line-height: 1.2em;
+  text-align: center;
+  color: var(--dark-10);
+}
+
+.quote-word {
+  will-change: color;
+}
+
+@media (max-width: 1279px) and (min-width: 810px) {
+  .quote-text {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 809px) {
+  .quote-text {
+    font-size: 24px;
+  }
+}
