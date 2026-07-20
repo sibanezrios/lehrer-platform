@@ -70,6 +70,10 @@
   letter-spacing: -0.02em;
 }
 
+.testimonial-avatar-photo {
+  object-fit: cover;
+}
+
 .testimonial-name {
   font-size: 16px;
   letter-spacing: -0.04em;

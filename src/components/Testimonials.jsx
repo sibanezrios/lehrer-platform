@@ -1,15 +1,38 @@
+import { useEffect, useState } from "react";
 import Reveal from "./Reveal";
+import { sanityClient, urlForImage } from "../lib/sanity";
 import "./Testimonials.css";
 
-// Los testimonios se editan desde el CMS en /admin (Decap CMS), que guarda
-// cada uno como un archivo JSON en content/testimonials/.
-const testimonialModules = import.meta.glob("../../content/testimonials/*.json", {
-  eager: true,
-});
+// Los testimonios se editan desde Sanity Studio (carpeta studio/, o
+// https://majd-testimonios.sanity.studio una vez desplegado), en el
+// documento "testimonial" con site == "majd-portfolio".
+const FALLBACK_TESTIMONIALS = [
+  {
+    _id: "fallback-1",
+    text: "Aquí puedes escribir la opinión de un estudiante sobre su experiencia en tus clases.",
+    name: "Nombre del estudiante",
+    role: "Clases de inglés",
+    rating: 5,
+  },
+  {
+    _id: "fallback-2",
+    text: "Aquí puedes escribir la opinión de otro estudiante sobre su experiencia en tus clases.",
+    name: "Nombre del estudiante",
+    role: "Clases de alemán",
+    rating: 5,
+  },
+  {
+    _id: "fallback-3",
+    text: "Aquí puedes escribir la opinión de otro estudiante sobre su experiencia en tus clases.",
+    name: "Nombre del estudiante",
+    role: "Preparación para examen internacional",
+    rating: 5,
+  },
+];
 
-const testimonials = Object.values(testimonialModules)
-  .map((mod) => mod.default ?? mod)
-  .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+const QUERY = `*[_type == "testimonial" && site == "majd-portfolio"] | order(_createdAt asc){
+  _id, name, role, text, rating, photo
+}`;
 
 function initials(name) {
   return name
@@ -42,6 +65,21 @@ function StarRating({ rating = 5 }) {
 }
 
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState(FALLBACK_TESTIMONIALS);
+
+  useEffect(() => {
+    if (!sanityClient) return;
+
+    let cancelled = false;
+    sanityClient.fetch(QUERY).then((data) => {
+      if (!cancelled && data?.length) setTestimonials(data);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <section className="testimonials-section" id="testimonials">
       <div className="container">
@@ -58,14 +96,23 @@ export default function Testimonials() {
         </Reveal>
 
         <div className="testimonials-grid">
-          {testimonials.map((t, i) => (
-            <Reveal as="div" className="testimonial-card" key={i}>
+          {testimonials.map((t) => (
+            <Reveal as="div" className="testimonial-card" key={t._id}>
               <StarRating rating={t.rating} />
-              <p className="testimonial-quote">{t.quote}</p>
+              <p className="testimonial-quote">{t.text}</p>
               <div className="testimonial-author">
-                <span className="testimonial-avatar" aria-hidden="true">
-                  {initials(t.name)}
-                </span>
+                {t.photo ? (
+                  <img
+                    src={urlForImage(t.photo).width(80).height(80).url()}
+                    alt=""
+                    className="testimonial-avatar testimonial-avatar-photo"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <span className="testimonial-avatar" aria-hidden="true">
+                    {initials(t.name)}
+                  </span>
+                )}
                 <div>
                   <p className="testimonial-name">{t.name}</p>
                   <p className="testimonial-role">{t.role}</p>
